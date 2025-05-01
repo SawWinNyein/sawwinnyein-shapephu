@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ဆိပ်ဖူး(ဘက)ကျောင်း - ပညာရေး</title>
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #34495e;
+            --light-color: #ecf0f1;
+            --danger-color: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pyidaungsu', 'Noto Sans Myanmar', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        .btn-secondary {
+            background: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background: #27ae60;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Subjects Section */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .subject-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .subject-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .subject-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Enrollment Form */
+        .enrollment {
+            background: var(--light-color);
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="schoollogo.jpg.jpg" alt="School Logo">
+                <div class="logo-text">
+                    <h1>ဆိပ်ဖူး(ဘက)ကျောင်း</h1>
+                    <p>ပညာရေး၊ စည်းကမ်း၊ ကိုယ်ကျင့်တရား</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">ပင်မစာမျက်နှာ</a></li>
+                    <li><a href="#about">ကျောင်းအကြောင်း</a></li>
+                    <li><a href="#subjects">ဘာသာရပ်များ</a></li>
+                    <li><a href="#enroll">ကျောင်းအပ်ရန်</a></li>
+                    <li><a href="#activities">ကျောင်းလုပ်ရှားမှုပုံရိပ်</a></li>
+                    <li><a href="#contact">ဆက်သွယ်ရန်</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>ဆိပ်ဖူး(ဘက)ကျောင်းမှ ကြိုဆိုပါသည်</h2>
+            <p>Grade 1 မှ Grade 10 အထိ ပညာရေးကို အရည်အသွေးပြည့်ဝစွာ သင်ကြားပို့ချပေးလျက်ရှိပါသည်</p>
+            <a href="#enroll" class="btn btn-secondary">ယခုပင် ကျောင်းအပ်ပါ</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>ကျောင်းအကြောင်း</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>ဆိပ်ဖူး(ဘက)ကျောင်းသည် ၁၉၉၀ ပြည့်နှစ်တွင် တည်ထောင်ခဲ့သော အရည်အသွေးပြည့်ဝသည့် ပညာရေးကျောင်းတစ်ခုဖြစ်ပါသည်။ ကျွန်ုပ်တို့၏ ရည်မှန်းချက်မှာ ကျောင်းသား/သူများအား ပညာရေး၊ စည်းကမ်းနှင့် ကိုယ်ကျင့်တရားကောင်းမွန်စွာ ပြုစုပျိုးထောင်ပေးရန်ဖြစ်ပါသည်။</p>
+                    <p>ကျွန်ုပ်တို့ကျောင်းတွင် အတန်းငယ်မှ အထက်တန်းအထိ ပညာရေးကို အဆင့်မီ သင်ကြားပို့ချပေးလျက်ရှိပြီး ကျောင်းသား/သူများ၏ အနာဂတ်အတွက် အကောင်းဆုံး အခြေခံပညာရေးကို ပေးစွမ်းနိုင်ရန် ကြိုးပမ်းလျက်ရှိပါသည်။</p>
+                </div>
+                <div class="about-image">
+                    <img src="school .jpg" alt="School Building">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="section" id="subjects">
+        <div class="container">
+            <div class="section-title">
+                <h2>သင်ကြားပို့ချသော ဘာသာရပ်များ</h2>
+            </div>
+            <div class="subjects-grid">
+                <div class="subject-card">
+                    <i class="fas fa-book"></i>
+                    <h3>မြန်မာစာ</h3>
+                    <p>မြန်မာစာပေ၊ စာရိတ္တနှင့် ယဉ်ကျေးမှုကို အခြေခံမှ အဆင့်မြင့်အထိ သင်ကြားပို့ချပေးပါသည်။</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-language"></i>
+                    <h3>အင်္ဂလိပ်စာ</h3>
+                    <p>နိုင်ငံတကာ ဆက်သွယ်ရေးအတွက် အရေးပါသော အင်္ဂလိပ်ဘာသာစကားကို ကျွမ်းကျင်စွာ သင်ကြားပေးပါသည်။</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-square-root-alt"></i>
+                    <h3>သင်္ချာ</h3>
+                    <p>သင်္ချာဆိုင်ရာ အခြေခံမှ အဆင့်မြင့်အထိ နည်းစနစ်မှန်ကန်စွာ သင်ကြားပို့ချပေးပါသည်။</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-atom"></i>
+                    <h3>ရူပဗေဒ</h3>
+                    <p>သဘာဝတရား၏ အခြေခံသဘောတရားများကို လက်တွေ့ဆန်ဆန် သင်ကြားပို့ချပေးပါသည်။</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>ဓာတုဗေဒ</h3>
+                    <p>ဓာတ်ပစ္စည်းများ၏ ဂုဏ်သတ္တိများနှင့် ဓာတ်ပြုမှုများကို စနစ်တကျ လေ့လာသင်ယူနိုင်စေရန် သင်ကြားပေးပါသည်။</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>ဇီဝဗေဒ</h3>
+                    <p>သက်ရှိများ၏ ဖွဲ့စည်းပုံနှင့် လုပ်ငန်းဆောင်တာများကို နက်နက်နဲနဲ လေ့လာသင်ယူနိုင်စေရန် သင်ကြားပေးပါသည်။</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Section -->
+    <section class="section enrollment" id="enroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>ကျောင်းအပ်နှံရန်</h2>
+            </div>
+            <div class="form-container">
+                <form id="enrollmentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentName">ကျောင်းသား/သူ အမည်</label>
+                            <input type="text" id="studentName" name="studentName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">မွေးသက္ကရာဇ်</label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fatherName">ဖခင်အမည်</label>
+                            <input type="text" id="fatherName" name="fatherName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="motherName">မိခင်အမည်</label>
+                            <input type="text" id="motherName" name="motherName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">နေရပ်လိပ်စာ</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">ဖုန်းနံပါတ်</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">အီးမေးလ် (ရှိလျှင်)</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="grade">အပ်နှံမည့်အတန်း</label>
+                            <select id="grade" name="grade" required>
+                                <option value="">ရွေးချယ်ပါ</option>
+                                <option value="Grade 1">Grade 1</option>
+                                <option value="Grade 2">Grade 2</option>
+                                <option value="Grade 3">Grade 3</option>
+                                <option value="Grade 4">Grade 4</option>
+                                <option value="Grade 5">Grade 5</option>
+                                <option value="Grade 6">Grade 6</option>
+                                <option value="Grade 7">Grade 7</option>
+                                <option value="Grade 8">Grade 8</option>
+                                <option value="Grade 9">Grade 9</option>
+                                <option value="Grade 10">Grade 10</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="previousSchool">ယခင်တက်ရောက်ခဲ့သောကျောင်း (ရှိလျှင်)</label>
+                            <input type="text" id="previousSchool" name="previousSchool">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn">ကျောင်းအပ်နှံရန် တင်ပြမည်</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+     <!-- About Section -->
+     <section class="section" id="activities">
+        <div class="container">
+            <div class="section-title">
+                <h2>ကျောင်းလုပ်ရှားမှုပုံရိပ်</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    
+        
+                </div>
+                <div class="about-image">
+                    <h3>စာသင်ခန်းတွင် ပုံပြင်ပြောပုံရိပ်<h3> 
+                    <img src="activities 1.jpg"  width="300" height="250" alt="activities"> 
+                    <h3>အပြင်ထွက်ပြီး သုတေသနပြုလုပ်မှုပုံရိပ်</h3>
+                    <img src="activities 2.jpg"  width="300" height="250" alt="activities">
+                    
+                   
+                    <h3>ဓာတ်ပြုမှုပြုလုပ်ခြင်းပုံရိပ်</h3> 
+                    <img src="activities 3.jpg"  width="300" height="250" alt="activities"> 
+                    <h3>အပင်စိုက်ပျိုးခြင်းပုံရိပ်</h3>
+                    <img src="activities 4.jpg"  width="300" height="250" alt="activities">
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>ဆက်သွယ်ရန်</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p><i class="fas fa-map-marker-alt"></i> လိပ်စာ - ဓမ္မသာရီကော့သလော်ကျောင်း၊ ဆိပ်ဖူးကျေးရွာ၊ ဘားအံမြို့နယ်၊ ကရင်ပြည်နယ်</p>
+                    <p><i class="fas fa-phone"></i> ဖုန်း - ၀၉-၄၄၉၀၃၆၃၂၉</p>
+                    <p><i class="fas fa-envelope"></i> အီးမေးလ် - info@seikphu-school.edu.mm</p>
+                    <p><i class="fas fa-clock"></i> ကျောင်းဖွင့်ချိန် - တနင်္လာမှ သောကြာ၊ နံနက် ၉:၀၀ မှ ညနေ ၃:၀၀ အထိ</p>
+                </div>
+                <div class="about-image">
+                    <iframe 
+                    src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.181920333002!2d97.71709887397517!3d16.96324338385345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c2d3b5fb7e0665%3A0x45c36ee7042f5ef7!2z4YCT4YCZ4YC54YCZIOGAnuGArOGAm-GAriDhgYog4YCA4YCx4YCs4YC34YCe4YCc4YCx4YCs4YC6IOGAgOGAu-GAseGArOGAhOGAuuGAuA!5e1!3m2!1sen!2smm!4v1746112462684!5m2!1sen!2smm" 
+                    width="100%" 
+                    height="300" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ဆိပ်ဖူး(ဘက)ကျောင်း</h3>
+                    <p>ပညာရေး၊ စည်းကမ်း၊ ကိုယ်ကျင့်တရား</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>လင့်ခ်များ</h3>
+                    <ul>
+                        <li><a href="#home">ပင်မစာမျက်နှာ</a></li>
+                        <li><a href="#about">ကျောင်းအကြောင်း</a></li>
+                        <li><a href="#subjects">ဘာသာရပ်များ</a></li>
+                        <li><a href="#enroll">ကျောင်းအပ်ရန်</a></li>
+                        <li><a href="#activities">ကျောင်းလုပ်ရှားမှုပုံရိပ်</li>
+                        <li><a href="#contact">ဆက်သွယ်ရန်</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>ကျောင်းဖွင့်ချိန်</h3>
+                    <ul>
+                        <li>တနင်္လာ - သောကြာ</li>
+                        <li>နံနက် ၉:၀၀ - ၃:၀၀</li>
+                        <li>စနေ၊ တနင်္ဂနွေ - ပိတ်ရက်</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 ဆိပ်ဖူး(ဘက)ကျောင်း. အားလုံးသော အခွင့်အရေးများ လုံခြုံစွာ ထိန်းသိမ်းထားပါသည်။</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Form Submission
+        document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const studentName = document.getElementById('studentName').value;
+            const grade = document.getElementById('grade').value;
+            
+            // Here you would normally send the data to a server
+            // For this example, we'll just show an alert
+            alert(`ကျေးဇူးတင်ပါသည် ${studentName}!\n\n${grade} အတန်းအပ်နှံရန် တင်ပြချက်ကို လက်ခံရရှိပါသည်။ ကျွန်ုပ်တို့မှ ဆက်သွယ်ပေးပါမည်။`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Simple animation on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight - 100) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Initialize sections with opacity 0 for animation
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        // Trigger animation for first section on load
+        window.addEventListener('load', function() {
+            document.querySelector('.section').style.opacity = '1';
+            document.querySelector('.section').style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>
